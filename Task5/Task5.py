@@ -77,10 +77,12 @@ def GZ_metod (A, b, eps):
 
 
 
-A = np.array([[10, 1, 1],
-              [2, 10, 1],
-              [2, 2, 10]])
-b = np.array([12, 13, 14])
+A = np.array([[8, -1, -1, 2],
+            [1, 6, -2, -2],
+            [2, 1, -5, 1],
+            [1, -1, 1, -4]])
+b = np.array([11, -7, 2, -2])
+
 
 def time_test(f, *args, **kwargs):
     start = time.time()
@@ -89,9 +91,10 @@ def time_test(f, *args, **kwargs):
     end = time.time()
     return end - start
 
-time_test(LU_razl, A, b)
-time_test(Yakobi, A, b, eps=0.001)
-time_test(GZ_metod, A, b, eps=0.001)
+
+print(f'Время выполнения LU разложение: {time_test(LU_razl, A, b)}')
+print(f'Время выполнения Якоби: {time_test(Yakobi, A, b, eps=0.001)}')
+print(f'Время выполнения Гаусса-Зейделя: {time_test(GZ_metod, A, b, eps=0.001)}')
 
 Val_eps = [1e-1, 1e-2, 1e-3, 1e-4, 1e-5, 1e-6, 1e-7, 1e-8, 1e-9]
 iter_Y = []
